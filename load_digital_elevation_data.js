@@ -32,7 +32,8 @@ print(mazambulo)
 
 
 // Display the feature collection and color it in red.
-Map.addLayer(mazambulo)
+Map.centerObject(mazambulo, 10)
+Map.addLayer(mazambulo, {color: 'red'}, 'mazambulo');
 
 
 // Load Landsat 8 Annual Greenest-Pixel TOA Reflectance Composite from search bar.
