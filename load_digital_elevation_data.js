@@ -82,7 +82,8 @@ print(ndvi)
 
 
 // Calculate NDVI using normalizedDifference function.
-
+var ndvi = gp2017.normalizedDifference(['B5', 'B4']).rename('NDVI')
+print(ndvi)
 
 
 // Load ASTER GDEM tiles of the Montes Mazambulo from own assets.
