@@ -1,5 +1,4 @@
 //// LOAD AND VISUALIZE DATA ////
-var srtm = ee.Image("CGIAR/SRTM90_V4");
 
 
 // Load SRTM Digital Elevation Data Version 4 from search bar.
@@ -8,13 +7,15 @@ var srtm = ee.Image("CGIAR/SRTM90_V4");
 console.log(srtm)
 
 
-
 // Display the image.
-
+Map.addLayer(srtm);
 
 
 // Add visualization parameters.
 // Available parameters can be found in the ee.data.getMapId() function documentation.
+var vp = {
+  
+}
 
 
 
