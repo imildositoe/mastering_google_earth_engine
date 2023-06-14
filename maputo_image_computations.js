@@ -39,11 +39,16 @@ Map.addLayer (ns, vp, 'hillshade')
 /// Calculate mean elevation in a region.
 // Create geometry using GUI tool and call it polygon.
 // Print the geometry.
-
+print(maputo);
 
 
 // Calculate mean elevation inside geometry.
-
+var meanElev = srtm.reduceRegion({
+    reducer: ee.Reducer.mean(),
+    geometry: maputo
+  });
+  
+  print('Mean elevation in Maputo', meanElev);
 
 
 // The calculation returns a dictionary with the results.
