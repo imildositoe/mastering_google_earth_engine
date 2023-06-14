@@ -1,9 +1,11 @@
 //// LOAD AND VISUALIZE DATA ////
+var srtm = ee.Image("CGIAR/SRTM90_V4");
 
 
 // Load SRTM Digital Elevation Data Version 4 from search bar.
 // Rename it to srtm.
 // Print it.
+console.log(srtm)
 
 
 
