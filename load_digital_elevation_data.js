@@ -4,18 +4,22 @@
 // Load SRTM Digital Elevation Data Version 4 from search bar.
 // Rename it to srtm.
 // Print it.
-console.log(srtm)
+print(srtm)
 
 
 // Display the image.
-Map.addLayer(srtm);
 
 
 // Add visualization parameters.
 // Available parameters can be found in the ee.data.getMapId() function documentation.
 var vp = {
-  
+  bands: 'elevation',
+  min: 0,
+  max: 6000,
+  palette: ['green', 'yellow', 'red', 'white']
 }
+
+Map.addLayer(srtm, vp, 'srtm');
 
 
 
@@ -24,11 +28,11 @@ var vp = {
 
 
 // Print it.
-
+print(mazambulo)
 
 
 // Display the feature collection and color it in red.
-
+Map.addLayer(mazambulo)
 
 
 // Load Landsat 8 Annual Greenest-Pixel TOA Reflectance Composite from search bar.
