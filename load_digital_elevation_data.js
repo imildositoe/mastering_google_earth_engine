@@ -52,7 +52,13 @@ print(gp)
 //green2017 = greenest.filterDate('2017');
 //green2017 = greenest.filter(ee.Filter.date('2017'));
 // Display it in real colors.
-
+var vpreal = {
+    bands: ['B4', 'B3', 'B2'],
+    min: 0.05,
+    max: 0.3
+  }
+  
+  Map.addLayer(gp2017, vpreal, 'real color')
 
 
 // Display it in false colors to highlight vegetation.
