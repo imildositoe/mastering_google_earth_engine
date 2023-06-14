@@ -62,7 +62,13 @@ var vpreal = {
 
 
 // Display it in false colors to highlight vegetation.
-
+var vpfalse = {
+    bands: ['B5', 'B4', 'B3'],
+    min: 0.05,
+    max: 0.3
+  }
+  
+  Map.addLayer(gp2017, vpfalse, 'false color')
 
 
 // Calculate NDVI doing band math.
