@@ -64,6 +64,14 @@ var multipleMeanElev = srtm.reduceRegions({
   print(multipleMeanElev);
 
 
+//Export the results
+Export.table.toDrive({
+    collection: multipleMeanElev,
+    folder: 'wfp_mozambique_training',
+    selectors: 'mean',
+    fileFormat: 'SHP'
+})
+
 // The calculation returns a dictionary with the results.
 
 
