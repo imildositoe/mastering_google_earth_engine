@@ -50,6 +50,19 @@ var meanElev = srtm.reduceRegion({
   
   print('Mean elevation in Maputo', meanElev);
 
+//CHALLENGE
+//Create 3 polygons in a new layer
+
+//Calculate the mean elevation for the three polygons
+//TIP: .reduceRegions
+var multipleMeanElev = srtm.reduceRegions({
+    collection: multiple_maputo,
+    reducer: ee.Reducer.mean()
+  })
+  
+  //Print the results
+  print(multipleMeanElev);
+
 
 // The calculation returns a dictionary with the results.
 
