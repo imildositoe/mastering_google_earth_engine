@@ -43,7 +43,8 @@ print(gp)
 
 
 // Load the 2017 composite and name it green2017.
-
+var gp2017 = ee.Image('LANDSAT/LC8_L1T_ANNUAL_GREENEST_TOA/2017');
+print(gp)
 
 
 // You can also select the image by applying a filter by date function, in two ways:
