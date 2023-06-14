@@ -39,7 +39,7 @@ Map.addLayer(mazambulo, {color: 'red'}, 'mazambulo');
 // Load Landsat 8 Annual Greenest-Pixel TOA Reflectance Composite from search bar.
 // Rename it to greenestPixel.
 // Print it.
-
+print(gp)
 
 
 // Load the 2017 composite and name it green2017.
