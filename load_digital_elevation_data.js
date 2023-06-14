@@ -86,6 +86,17 @@ var ndvi = gp2017.normalizedDifference(['B5', 'B4']).rename('NDVI')
 print(ndvi)
 
 
+//VISUALIZE NDVI IMAGE AND DEFINE ITS VISUALIZATION PARAMETERS
+var ndviV = {
+    bands: ['NDVI'],
+    min: 0,
+    max: 1.5,
+    palette: ['green', 'yellow', 'red', 'white']
+  }
+  
+  Map.addLayer(ndvi, ndviV, 'NDVI');
+
+
 // Load ASTER GDEM tiles of the Montes Mazambulo from own assets.
 
 
