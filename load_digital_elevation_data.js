@@ -72,11 +72,13 @@ var vpfalse = {
 
 
 // Calculate NDVI doing band math.
-
+var nir = gp2017.select('B5')
+var red = gp2017.select('B4')
+var ndvi = nir.subtract(red).divide(nir.add(red)).rename('NDVI')
 
 
 // Print NDVI and display it.
-
+print(ndvi)
 
 
 // Calculate NDVI using normalizedDifference function.
