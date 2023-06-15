@@ -56,7 +56,8 @@ var vpNDVI = {
 
 
 // Create greenest pixel composite and display it.
-
+var gp = withNDVI.qualityMosaic('ndvi');
+Map.addLayer(gp, visPar, 'greenest pixel');
 
 
 // Clip greenest pixel to Montes Mazambulo.
