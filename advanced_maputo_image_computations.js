@@ -116,13 +116,6 @@ Export.image.toDrive({
 var mask2 = srtm.gt(1000)
 Map.addLayer(mask2);
 
-var vp2 = {
-  bands: 'b1',
-  min: 20,
-  max: 800,
-  palette: ['green', 'yellow', 'orange', 'brown']
-}
-
 // Mask (set to no data) all areas below 1000 meters elevation.
 var srtm1000 = srtm.updateMask(mask2);
 
