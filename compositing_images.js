@@ -84,9 +84,9 @@ Export.image.toDrive({
 // Load Sentinel-2 MSI: MultiSpectral Instrument, Level-1C.
 
 
-
 // Filter by date and area to match Landsat 9 data.
-
+var filtered2 = S2.filterDate('2022-01-01', '2022-12-31')
+  .filterBounds(montes);
 
 
 // Print it (check band names, etc).
