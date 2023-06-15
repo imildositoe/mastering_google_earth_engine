@@ -95,6 +95,8 @@ var mask = mosaic.gt(300)
 Map.addLayer(mask);
 
 // Mask (set to no data) all areas below 300 meters elevation.
+var mosaicMasked = mosaic.updateMask(mask);
+Map.addLayer(mosaicMasked, vp, 'masked');
 
 
 //////////////////////////////////////////////////////////
