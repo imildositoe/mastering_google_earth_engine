@@ -139,5 +139,11 @@ var vp1000 = {
 
 
 // Export results in image format
-
+Export.image.toDrive({
+    image: srtm1000,
+    description: 'srtm_1000',
+    folder: 'wfp_mozambique_training',
+    scale: 100,
+    region: geometry2
+  });
 
