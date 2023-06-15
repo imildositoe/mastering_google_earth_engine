@@ -61,7 +61,9 @@ Map.addLayer(gp, visPar, 'greenest pixel');
 
 
 // Clip greenest pixel to Montes Mazambulo.
-
+var clipped = gp.clip(montes)
+Map.addLayer(clipped, visPar, 'clipped');
+print(clipped);
 
 
 // Export greenest pixel composite to Google Drive.
