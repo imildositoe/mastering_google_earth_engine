@@ -1,6 +1,7 @@
 //// COMPOSITING IMAGES ////
 var L9 = ee.ImageCollection("LANDSAT/LC09/C02/T1_TOA"),
-    montes = ee.FeatureCollection("users/sitoeimildo/montes_mazambulo")
+    montes = ee.FeatureCollection("users/sitoeimildo/montes_mazambulo"),
+    S2 = ee.ImageCollection("COPERNICUS/S2")
 ;
 
 // Load USGS Landsat 9 Collection 2 Tier 1 TOA Reflectance from search bar
