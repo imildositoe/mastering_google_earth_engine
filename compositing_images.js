@@ -67,7 +67,13 @@ print(clipped);
 
 
 // Export greenest pixel composite to Google Drive.
-
+Export.image.toDrive({
+    image: clipped.select(['B4', 'B3', 'B2']),
+    description: 'clipped',
+    folder: 'wfp_mozambique_training',
+    scale: 30,
+    region: montes
+});
 
 
 /////////////////////////////////////////////////////////////////////////////////////
