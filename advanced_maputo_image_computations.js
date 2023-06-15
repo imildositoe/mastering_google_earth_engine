@@ -102,9 +102,13 @@ print(dem2);
 
 
 // Put the tiles in an image collection.
+var col = ee.ImageCollection([dem1, dem2]);
+print(col);
 
 
 // Mosaic the tiles into a single image.
+var mosaic = col.mosaic();
+print(mosaic);
 
 
 // Get all pixels greater than 300 meters: this will create a binary image.
