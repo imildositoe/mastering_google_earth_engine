@@ -40,11 +40,19 @@ Map.addLayer(filtered.median(), visPar, 'true color');
 var addNDVI = function(img) {
     var ndvi = img.normalizedDifference(['B5', 'B4']).rename('ndvi');
     return img.addBands(ndvi)
-  }
+}
 
 
 // Map the function on the image collection.
+var withNDVI = filtered.map(addNDVI);
+print(withNDVI);
 
+var vpNDVI = {
+  bands: 'ndvi',
+  min: 0,
+  max: 0.8,
+  palette: ['black', 'purple', 'yellow', 'red']
+}
 
 
 // Create greenest pixel composite and display it.
