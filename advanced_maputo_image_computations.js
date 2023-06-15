@@ -81,6 +81,14 @@ print(col);
 var mosaic = col.mosaic();
 print(mosaic);
 
+var vp = {
+    bands: 'b1',
+    min: 20,
+    max: 800,
+    palette: ['green', 'yellow', 'orange', 'brown']
+  }
+  
+  Map.addLayer(mosaic, vp);
 
 // Get all pixels greater than 300 meters: this will create a binary image.
 
