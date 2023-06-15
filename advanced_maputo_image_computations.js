@@ -91,7 +91,8 @@ var vp = {
   Map.addLayer(mosaic, vp);
 
 // Get all pixels greater than 300 meters: this will create a binary image.
-
+var mask = mosaic.gt(300)
+Map.addLayer(mask);
 
 // Mask (set to no data) all areas below 300 meters elevation.
 
