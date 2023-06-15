@@ -98,6 +98,14 @@ Map.addLayer(mask);
 var mosaicMasked = mosaic.updateMask(mask);
 Map.addLayer(mosaicMasked, vp, 'masked');
 
+Export.image.toDrive({
+    image: mosaicMasked,
+    description: 'masked_dem',
+    folder: 'wfp_mozambique_training',
+    scale: 250,
+    region: geometry
+  });
+
 
 //////////////////////////////////////////////////////////
 ///   Exercise: mask areas below 1000 m from srtm      ///
