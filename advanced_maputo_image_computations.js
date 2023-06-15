@@ -128,7 +128,14 @@ var srtm1000 = srtm.updateMask(mask2);
 
 
 // Visualize the masked layer
-
+var vp1000 = {
+    bands: 'elevation',
+    min: 1000,
+    max: 6000,
+    palette: ['black', 'purple', 'yellow']
+  }
+  
+  Map.addLayer(srtm1000, vp1000, 'srtm1000');
 
 
 // Export results in image format
