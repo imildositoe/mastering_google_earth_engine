@@ -21,7 +21,14 @@ print(filtered.size());
 
 
 // Display the collection.
-
+var visPar = {
+    bands: ['B4', 'B3', 'B2'],
+    min: 0.05,
+    max: 0.15
+  }
+  
+  Map.centerObject(filtered);
+  Map.addLayer(filtered.mean(), visPar, 'true color');
 
 
 // Display median composite.
