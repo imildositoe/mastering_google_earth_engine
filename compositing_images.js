@@ -32,7 +32,8 @@ var visPar = {
 
 
 // Display median composite.
-
+Map.centerObject(montes);
+Map.addLayer(filtered.median(), visPar, 'true color');
 
 
 // Create a function than adds an NDVI band to the collection.
