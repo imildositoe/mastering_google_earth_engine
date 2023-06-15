@@ -37,7 +37,10 @@ Map.addLayer(filtered.median(), visPar, 'true color');
 
 
 // Create a function than adds an NDVI band to the collection.
-
+var addNDVI = function(img) {
+    var ndvi = img.normalizedDifference(['B5', 'B4']).rename('ndvi');
+    return img.addBands(ndvi)
+  }
 
 
 // Map the function on the image collection.
