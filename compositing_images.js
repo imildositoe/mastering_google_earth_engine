@@ -90,11 +90,17 @@ var filtered2 = S2.filterDate('2022-01-01', '2022-12-31')
 
 
 // Print it (check band names, etc).
-
+print('Filtered Sentinel', filtered2);
 
 
 // Adapt function to calculate NDVI over the Sentinel 2 collection.
-
+var addNDVISent = function(img) {
+    var ndvi = img.normalizedDifference(['B8', 'B4']).rename('ndviSent');
+    return img.addBands(ndvi)
+  }
+  
+  var withNDVISent = filtered2.map(addNDVISent);
+  print(withNDVISent);
 
 
 // Make greenest pixel composite.
