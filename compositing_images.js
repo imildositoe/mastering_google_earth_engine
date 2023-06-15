@@ -104,7 +104,13 @@ var addNDVISent = function(img) {
 
 
 // Make greenest pixel composite.
-
+var gpSent = withNDVISent.qualityMosaic('ndviSent');
 
 
 // Visualize it on the map.
+var vpNDVISent = {
+    bands: ['B4','B3','B2'],
+    min: 0,
+    max: 3000
+  }
+  Map.addLayer(gpSent, vpNDVISent, 'greenest pixel sentinel');
