@@ -124,7 +124,7 @@ var vp2 = {
 }
 
 // Mask (set to no data) all areas below 1000 meters elevation.
-
+var srtm1000 = srtm.updateMask(mask2);
 
 
 // Visualize the masked layer
