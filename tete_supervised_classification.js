@@ -2425,80 +2425,54 @@ Map.addLayer(clipped, vp, 'false colors (vegetation)');
 // Grasslands: at least 50 (100) class: 2
 // Water: at least 10 points (30) class: 3
 // Bare: at least 20 (50) class: 4
-// Settlement: at least 10 (30) class: 5
-// Irrigated: at least 30 (50) class: 6
+//Settlement: at least 10 (30) class: 5
 
 
 // Mesclar GCPs.
-var gcps = forest.merge(crops).merge(grassland).merge(water).merge(settlement).merge(irrigated);
+
 
 
 // To assess classification accuracy we use only 70% of the data to 
 // train our classifier. The remaining 30% will be used for validation
 // To do so, let's add column of random numbers to the ground control points.
-var gcps = gcps.randomColumn();
-var training = gcps.filter(ee.Filter.lt('random', 0.7));
-var validation = gcps.filter(ee.Filter.gte('random', 0.7));
+
 
 
 // Check sizes
-print('all', gcps.size());
-print('training set', training.size());
-print('validatio set', validation.size());
+
 
 
 // Overlay the point on the image to get training data.
-print(training);
+// Sobrepõe o ponto na imagem para obter dados de treinamento.
+
 
 // Get band names from clipped image
-var training = clipped.sampleRegions({
-  collection: training,
-  properties: ['class'],
-  scale: 30
-});
+// Obtém os nomes das bandas da imagem recortada
 
-print(training);
 
 // Train a random forest classifier.
-var classifier = ee.Classifier.smileRandomForest(250).train({
-  features: training,
-  classProperty: 'class',
-  inputProperties: clipped.bandNames()
-});
+// Treina um classificador de floresta aleatório.
 
 
 // Classify the image.
-var classified = clipped.classify(classifier);
+// Classifica a imagem.
 
 
 // Print and display.
-print(classified);
+// Imprimir e exibir.
 
-var vpClass = {
-  min: 0,
-  max: 6,
-  palette: ['#0a8b0c', '#ffc82d', '#b4ff76', '#048ec2', '#cacaca', '#ce0606', '#14ff00']
-}
-
-Map.addLayer(classified, vpClass, 'land cover');
 
 // Use classification map to assess accuracy using the validation fraction
 // of the overall training set created above.
-var test = classified.sampleRegions({
-  collection: validation,
-  properties: ['class'],
-  scale: 30
-});
-
-var cm = test.errorMatrix('class', 'classification');
-print('Matrix', cm);
-print('Overall acurrancy', cm.accuracy());
+// Use o mapa de classificação para avaliar a precisão usando a fração de validação
+// do conjunto geral de treinamento criado acima.
 
 
 // Try to improve the classification
-
+// Tenta melhorar a classificação
 
 // Define function for calculating image indices
+// Define função para calcular índices de imagem
 var addI = function(image) {
   var ndvi = image.normalizedDifference(['SR_B5', 'SR_B4']).rename('NDVI');
   var ndwi = image.normalizedDifference(['SR_B3', 'SR_B6']).rename('NDWI');
@@ -2514,24 +2488,25 @@ var addI = function(image) {
 };
 
 // Calculate indices on clipped image
-
+// Calcula índices na imagem recortada
 
 // Load WorldClim BIO Variables V1 and rename them climate
 // Select Mean Annual Temperature and Annual precipitation
-
+// Carregue as Variáveis ​​V1 do WorldClim BIO e renomeie-as como clima
+// Selecione Temperatura Anual Média e Precipitação Anual
 
 
 // Clip the climate variables and add them as new bands to the clipped image
-
+// Recorte as variáveis ​​climáticas e adicione-as como novas bandas à imagem recortada
 
 
 /// Repeat same processes as above
 // Overlay the point on the image to get training data.
-
+// Sobrepõe o ponto na imagem para obter dados de treinamento.
 
 
 // Get band names from clipped image
-
+// Obtém os nomes das bandas da imagem recortada
 
 
 // Train a random forest classifier.
@@ -2539,13 +2514,14 @@ var addI = function(image) {
 
 
 // Classify the image.
-
+// Classifica a imagem.
 
 
 // Print and display.
-
+// Imprimir e exibir.
 
 
 // Use classification map to assess accuracy using the validation fraction
 // of the overall training set created above.
-
+// Use o mapa de classificação para avaliar a precisão usando a fração de validação
+// do conjunto geral de treinamento criado acima.
