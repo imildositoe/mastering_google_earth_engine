@@ -1835,3 +1835,191 @@ var roi = ee.FeatureCollection("users/sitoeimildo/Caia_Maringue_Chemba"),
               "class": 3,
               "system:index": "99"
             })]);
+
+//// CLASSIFICATION ////
+
+
+// Load feature collection of Caia Maringue Chemba districts.
+// Display it on the map.
+// This is going to be our ROI.
+Map.centerObject(roi, 8);
+Map.addLayer(roi);
+
+
+// Load USGS Landsat 9 Level 2, Collection 2, Tier 1
+// Rename it to L9
+print(L9.size());
+
+
+// Filter collection to keep images from 2022 (dry season) in the polygon
+var filtered = L9.filterDate('2022-04-01', '2022-09-30')
+  .filterBounds(roi);
+  
+print(filtered.size());
+
+
+// Define a function that scales and masks Landsat surface reflectance images
+function prepLANDSR(image) {
+  // Mask for unwanted pixels
+  var qaMask = image.select('QA_PIXEL').bitwiseAnd(parseInt('11111', 2)).eq(0);
+  var saturationMask = image.select('QA_RADSAT').eq(0);
+  // Apply the scaling factors to the appropriate bands
+  var getFactorImg = function(factorNames) {
+    var factorList = image.toDictionary().select(factorNames).values();
+    return ee.Image.constant(factorList);
+  };
+  var scaleImg = getFactorImg([
+    'REFLECTANCE_MULT_BAND_.|TEMPERATURE_MULT_BAND_ST_B10']);
+  var offsetImg = getFactorImg([
+    'REFLECTANCE_ADD_BAND_.|TEMPERATURE_ADD_BAND_ST_B10']);
+  var scaled = image.select('SR_B.|ST_B10').multiply(scaleImg).add(offsetImg);
+  // Replace original bands with scaled bands and apply masks.
+  return image.addBands(scaled, null, true)
+    .updateMask(qaMask).updateMask(saturationMask);
+}
+
+// Map (.map) the function to clean the collection and select the
+// bands from B2 to B7
+filtered = filtered.map(prepLANDSR)
+    .select(['SR_B2', 'SR_B3', 'SR_B4', 'SR_B5', 'SR_B6', 'SR_B7']);
+
+
+// Make median composite 
+var composite = filtered.median();
+
+
+// Clip composite to the ROI's extent.
+var clipped = composite.clip(roi);
+
+
+// Define visualization parameters and visualize
+var vp = {
+  bands: ['SR_B4', 'SR_B3', 'SR_B2'],
+  min: 0,
+  max: 0.2
+}
+Map.centerObject(roi, 8);
+Map.addLayer(clipped, vp, 'real colors');
+
+
+var vp = {
+  bands: ['SR_B5', 'SR_B4', 'SR_B3'],
+  min: 0,
+  max: 0.2
+}
+Map.centerObject(roi, 8);
+Map.addLayer(clipped, vp, 'false colors (vegetation)');
+
+
+// Create ground control points usign GUI tool.
+// The Google Earth Satellite basemap can be used as a reference to define
+// land cover classes.
+// Set import as FeatureCollection.
+// Add property called 'class' and assign integer value starting from 0.
+// Merge GCPs.
+
+// Forest: at least 50 (100) class: 0
+// Crops: at least 30 (70): class 1
+// Grasslands: at least 50 (100) class: 2
+// Water: at least 10 points (30) class: 3
+// Bare: at least 20 (50) class: 4
+//Settlement: at least 10 (30) class: 5
+
+
+// Mesclar GCPs.
+
+
+
+// To assess classification accuracy we use only 70% of the data to 
+// train our classifier. The remaining 30% will be used for validation
+// To do so, let's add column of random numbers to the ground control points.
+
+
+
+// Check sizes
+
+
+
+// Overlay the point on the image to get training data.
+// Sobrepõe o ponto na imagem para obter dados de treinamento.
+
+
+// Get band names from clipped image
+// Obtém os nomes das bandas da imagem recortada
+
+
+// Train a random forest classifier.
+// Treina um classificador de floresta aleatório.
+
+
+// Classify the image.
+// Classifica a imagem.
+
+
+// Print and display.
+// Imprimir e exibir.
+
+
+// Use classification map to assess accuracy using the validation fraction
+// of the overall training set created above.
+// Use o mapa de classificação para avaliar a precisão usando a fração de validação
+// do conjunto geral de treinamento criado acima.
+
+
+// Try to improve the classification
+// Tenta melhorar a classificação
+
+// Define function for calculating image indices
+// Define função para calcular índices de imagem
+var addI = function(image) {
+  var ndvi = image.normalizedDifference(['SR_B5', 'SR_B4']).rename('NDVI');
+  var ndwi = image.normalizedDifference(['SR_B3', 'SR_B6']).rename('NDWI');
+  var ndbi = image.normalizedDifference(['SR_B6', 'SR_B5']).rename('NDBI');
+  var bsi = image.expression(
+      '(( X + Y ) - (A + B)) /(( X + Y ) + (A + B)) ', {
+        'X': image.select('SR_B6'), //swir1
+        'Y': image.select('SR_B4'),  //red
+        'A': image.select('SR_B5'), // nir
+        'B': image.select('SR_B2'), // blue
+  }).rename('BSI');
+  return image.addBands(ndvi).addBands(ndwi).addBands(ndbi).addBands(bsi);
+};
+
+// Calculate indices on clipped image
+// Calcula índices na imagem recortada
+
+// Load WorldClim BIO Variables V1 and rename them climate
+// Select Mean Annual Temperature and Annual precipitation
+// Carregue as Variáveis ​​V1 do WorldClim BIO e renomeie-as como clima
+// Selecione Temperatura Anual Média e Precipitação Anual
+
+
+// Clip the climate variables and add them as new bands to the clipped image
+// Recorte as variáveis ​​climáticas e adicione-as como novas bandas à imagem recortada
+
+
+/// Repeat same processes as above
+// Overlay the point on the image to get training data.
+// Sobrepõe o ponto na imagem para obter dados de treinamento.
+
+
+// Get band names from clipped image
+// Obtém os nomes das bandas da imagem recortada
+
+
+// Train a random forest classifier.
+// Treina um classificador de floresta aleatório.
+
+
+// Classify the image.
+// Classifica a imagem.
+
+
+// Print and display.
+// Imprimir e exibir.
+
+
+// Use classification map to assess accuracy using the validation fraction
+// of the overall training set created above.
+// Use o mapa de classificação para avaliar a precisão usando a fração de validação
+// do conjunto geral de treinamento criado acima.
