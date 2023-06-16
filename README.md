@@ -1,5 +1,18 @@
 ﻿# Mastering Google Earth Engine
 
+Project coded with pure JavaScript exploring some open-source satellites on Google Earth Engine
+
+Some Open-Sources Explored Satellites
+
+**USGS Landsat 8 Collection 2 Tier 1 TOA Reflectance**
+![image](https://github.com/imildositoe/mastering_google_earth_engine/assets/31238878/6d49ac7b-a3d5-4afd-b041-cde71e5616b3)
+
+
+
+**Harmonized Sentinel-2 MSI: MultiSpectral Instrument, Level-1C**
+![image](https://github.com/imildositoe/mastering_google_earth_engine/assets/31238878/c2467de7-cf45-4f8b-bf6f-1f30b6145f4d)
+
+
 
 **Supervised Classification with the placed Points in the Map to perform the Classification**
 ![image](https://github.com/imildositoe/mastering_google_earth_engine/assets/31238878/fe5950de-9508-4fd0-92b7-aa80992b07d6)
