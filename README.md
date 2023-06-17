@@ -4,7 +4,7 @@ Access: https://code.earthengine.google.com with your google account
 
 Project coded with pure JavaScript exploring some open-source satellites images jointly with some Shape files of cropped areas in Mozambique to analyse and perform classifications on Google Earth Engine.
 
-:: Some Open-Sources Explored Satellites ::
+::Some Open-Sources Explored Satellites::
 
 **USGS Landsat 8 Collection 2 Tier 1 TOA Reflectance**
 ![image](https://github.com/imildositoe/mastering_google_earth_engine/assets/31238878/6d49ac7b-a3d5-4afd-b041-cde71e5616b3)
@@ -16,14 +16,16 @@ Project coded with pure JavaScript exploring some open-source satellites images 
 
 
 
-**Supervised Classification with the placed Points in the Map to perform the Classification**
+::Captured::
+
+**Supervised classification with the placed points in the map to perform the classification**
 ![image](https://github.com/imildositoe/mastering_google_earth_engine/assets/31238878/fe5950de-9508-4fd0-92b7-aa80992b07d6)
 
 
 
-**Supervised Classification with the placed Points in the Map to perform the Classification, Showing Also the False Colors**
+**Supervised classification with the placed points in the map to perform the classification, showing also the false colors**
 ![image](https://github.com/imildositoe/mastering_google_earth_engine/assets/31238878/43466e24-bbd9-44f3-bd95-ca2e0a37245f)
 
 
-**Supervised Classification with the placed Points in the Map to perform the Classification (Final Classification)**
+**Supervised classification with the placed points in the map to perform the classification (Final Classification)**
 ![image](https://github.com/imildositoe/mastering_google_earth_engine/assets/31238878/97d9b8cd-1dc6-4b09-88c8-63b5a799af25)
