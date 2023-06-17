@@ -1,5 +1,7 @@
 ﻿# Mastering Google Earth Engine
 
+Access: https://code.earthengine.google.com
+
 Project coded with pure JavaScript exploring some open-source satellites images jointly with some Shape files of cropped areas in Mozambique to analyse and perform classifications on Google Earth Engine.
 
 :: Some Open-Sources Explored Satellites ::
