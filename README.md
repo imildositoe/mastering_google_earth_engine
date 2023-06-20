@@ -6,12 +6,12 @@ Project coded with pure JavaScript exploring some open-source satellites images 
 
 ::Some Open-Sources Explored Satellites::
 
-**USGS Landsat 8 Collection 2 Tier 1 TOA Reflectance**
+**Landsat 8**
 ![image](https://github.com/imildositoe/mastering_google_earth_engine/assets/31238878/6d49ac7b-a3d5-4afd-b041-cde71e5616b3)
 
 
 
-**Harmonized Sentinel-2 MSI: MultiSpectral Instrument, Level-1C**
+**Sentinel-2**
 ![image](https://github.com/imildositoe/mastering_google_earth_engine/assets/31238878/c2467de7-cf45-4f8b-bf6f-1f30b6145f4d)
 
 
